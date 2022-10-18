@@ -5,29 +5,28 @@ const gridDimension = 4;
 
 const field = new Field(gridDimension, gridDimension);
 
-let displayField;
+let fieldController;
+
 
 function setup() {
-	displayField = initializeDisplayField();
 
+	fieldController = new FieldController({field: field});
 
 	// testing 
+	/*
 	field.connectNext(2, 2);
 	field.connectNext(0, 0);
 	field.connectNext(2, 1);
-
+	*/
 }
 
 
 function draw(){
-
+	
 	background(150, 0, 30);
 
-	displayField(field);
+	fieldController.doWork();
 }
 
 
-function onClick(){
-	let 
-}
 

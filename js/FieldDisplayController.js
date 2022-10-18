@@ -1,7 +1,7 @@
 	
 class FieldDisplayController {
 	
-	constructor(field, margin = 0, pointSize = 40, dimension = [600, 600]) {
+	constructor({field, margin = 0, pointSize = 70, dimension = [600, 600]}) {
 		this.field = field;
 
 		this.margin = margin;
@@ -10,7 +10,7 @@ class FieldDisplayController {
 		createCanvas(...dimension);
 
 		// vertical and hortizontal distance between points will remain constant, based on the horizontal margin and number of points in a row
-		this.spacing = 1.0 * (width - 2 * margin) / (field.dimX - 1);
+		this.spacing = 1.0 * (width - 2 * this.margin) / (this.field.dimX - 1);
 
 	}
 
@@ -26,7 +26,7 @@ class FieldDisplayController {
 
 		for(let i = 0; i < field.dimX; i += 1){
 			for(let j = 0; j < field.dimY; j += 1){		
-				ellipse(margin + i * this.spacing, margin + j * this.spacing, this.pointSize, this.pointSize);
+				ellipse(this.margin + i * this.spacing, this.margin + j * this.spacing, this.pointSize, this.pointSize);
 			}
 		}
 
@@ -35,7 +35,7 @@ class FieldDisplayController {
 		for(let i = 0; i < field.chain.length - 1; i ++){
 			const link = [field.chain[i], field.chain[i + 1]];
 
-			line(margin + link[0].x * this.spacing, margin + link[0].y * this.spacing, margin + link[1].x * this.spacing, margin + link[1].y * this.spacing);
+			line(this.margin + link[0].x * this.spacing, this.margin + link[0].y * this.spacing, this.margin + link[1].x * this.spacing, this.margin + link[1].y * this.spacing);
 
 		}
 	}
@@ -44,14 +44,15 @@ class FieldDisplayController {
 	get formattedPosArray() {
 
 		let posArray = [];
+
 		for(let i = 0; i < field.dimX; i += 1){
 			for(let j = 0; j < field.dimY; j += 1){		
 				posArray.push(
 					{
 						"screenPos": 
 						{
-							"x": margin + i * this.spacing,
-							"y": margin + j * this.spacing
+							"x": this.margin + i * this.spacing,
+							"y": this.margin + j * this.spacing
 						},
 						"fieldPos":
 						{

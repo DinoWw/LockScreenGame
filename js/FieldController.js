@@ -1,23 +1,20 @@
 class FieldController {
-	constructor(field) {
+	constructor({"field": field}) {
 		this.field = field;
 
-		this.display = FieldDisplayController(this.field, margin = 70);
+		this.displayer = new FieldDisplayController({field: this.field, margin: 70});
 
-
-
-
-		this.interactor = FieldInteractionController(this.field, display.formattedPosArray, display.pointSize);
+		this.interactor = new FieldInteractionController({field: this.field, posArray: this.displayer.formattedPosArray, influenceRange: this.displayer.pointSize});
 
 	}
 
 	doWork() {
 		
 		if(mouseIsPressed){
-			interactor.interactPos(mouseX, mouseY);
+			this.interactor.interactPos(mouseX, mouseY);
 		}
 
-		display.displayField();
+		this.displayer.displayField();
 
 	}
 
