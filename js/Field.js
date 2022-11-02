@@ -32,7 +32,9 @@ class Field {
     
     if(d.x == 0) {
       for(let i = lastPoint.y + Math.sign(d.y); i != y + Math.sign(d.y); i += Math.sign(d.y)) {
-        this.chain.push({"x": x, "y": i});
+        if(!this.chain.some(a => a.x == x && a.y == i)){
+          this.chain.push({"x": x, "y": i});  
+        }
       }
       return;
     }
@@ -42,9 +44,10 @@ class Field {
         
         let yNew = 1.0 * d.y / d.x * i;
         
-        if(yNew % 1 != 0)continue;
-        
-        this.chain.push({"x": lastPoint.x + i, "y": lastPoint.y + yNew});
+        if(yNew % 1 != 0) continue;
+        if(!this.chain.some(a => a.x == lastPoint.x + i && a.y == lastPoint.y + yNew)){
+          this.chain.push({"x": lastPoint.x + i, "y": lastPoint.y + yNew});
+        }
         
       }
       return;
