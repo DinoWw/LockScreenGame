@@ -10,6 +10,7 @@ class FieldController {
 		/**/
 		
 		//this.field = field;
+		//console.log(this.field);
 
 		this.displayer = new FieldDisplayController({"field": this.field, margin: 70});
 
@@ -21,6 +22,7 @@ class FieldController {
 		
 		if(mouseIsPressed){
 			this.interactor.interactPos(mouseX, mouseY);
+			//console.log(this.field)
 		}
 
 		this.displayer.displayField();

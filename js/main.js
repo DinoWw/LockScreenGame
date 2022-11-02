@@ -3,14 +3,14 @@ const gridDimension = 4;
 
 
 
-const field = new Field(gridDimension, gridDimension);
+const fieldMain = new Field(gridDimension, gridDimension);
 
 let fieldController;
 
 
 function setup() {
 
-	fieldController = new FieldController({field: field});
+	fieldController = new FieldController({"field": fieldMain});
 
 	// testing 
 	/*

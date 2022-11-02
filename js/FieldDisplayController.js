@@ -1,4 +1,4 @@
-	
+		
 class FieldDisplayController {
 	
 	constructor({field, margin = 0, pointSize = 70, dimension = [600, 600]}) {
@@ -24,16 +24,16 @@ class FieldDisplayController {
 
 		
 
-		for(let i = 0; i < field.dimX; i += 1){
-			for(let j = 0; j < field.dimY; j += 1){		
+		for(let i = 0; i < this.field.dimX; i += 1){
+			for(let j = 0; j < this.field.dimY; j += 1){		
 				ellipse(this.margin + i * this.spacing, this.margin + j * this.spacing, this.pointSize, this.pointSize);
 			}
 		}
 
 		stroke(120, 20, 50);
 		strokeWeight(20);
-		for(let i = 0; i < field.chain.length - 1; i ++){
-			const link = [field.chain[i], field.chain[i + 1]];
+		for(let i = 0; i < this.field.chain.length - 1; i ++){
+			const link = [this.field.chain[i], this.field.chain[i + 1]];
 
 			line(this.margin + link[0].x * this.spacing, this.margin + link[0].y * this.spacing, this.margin + link[1].x * this.spacing, this.margin + link[1].y * this.spacing);
 
@@ -45,8 +45,8 @@ class FieldDisplayController {
 
 		let posArray = [];
 
-		for(let i = 0; i < field.dimX; i += 1){
-			for(let j = 0; j < field.dimY; j += 1){		
+		for(let i = 0; i < this.field.dimX; i += 1){
+			for(let j = 0; j < this.field.dimY; j += 1){		
 				posArray.push(
 					{
 						"screenPos": 
